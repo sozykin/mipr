@@ -8,17 +8,17 @@ MIPr includes:
 * InputFormat and OutputFormat for images
 * Several Jobs for image processing
 
-Installation
-============
+## Installation
 
-Prerequisites
--------------
+
+### Prerequisites
+
 
 * Java 7 (preferably Oracle)
 * Maven 3
 
-Building
---------
+### Building
+
 
 1. Download and unzip MIPr source
 2. Run the command:
@@ -27,8 +27,8 @@ Building
 
    It will build jar file and place it in the target directory.
 
-Testing
--------
+### Testing
+
 
 1. Copy image files to HDFS:
 
@@ -42,5 +42,5 @@ Testing
 
     $ hadoop fs -copyToLocal hdfs_output_folder local_output_folder
 
-4. Check that images was converted correctly.
+4. Check that images were converted correctly.
 
