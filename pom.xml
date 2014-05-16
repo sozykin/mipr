@@ -13,6 +13,11 @@
             <id>cloudera</id>
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
+        <repository>
+            <id>project.local</id>
+            <name>project</name>
+            <url>file:${project.basedir}/repo</url>
+        </repository>
     </repositories>
 
     <dependencies>
@@ -21,6 +26,12 @@
             <artifactId>hadoop-client</artifactId>
             <version>2.0.0-cdh4.6.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.opencv</groupId>
+            <artifactId>opencv-java</artifactId>
+            <version>2.4.9</version>
+        </dependency>
+
     </dependencies>
 
     <properties>

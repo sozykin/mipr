@@ -34,7 +34,7 @@ public class BufferedImageCombineInputFormat extends CombineFileInputFormat<Null
     public RecordReader<NullWritable,BufferedImageWritable> createRecordReader(InputSplit split,
                        TaskAttemptContext context) throws IOException {
         return new
-                CombineFileRecordReader<>((CombineFileSplit)split, context,
+                CombineFileRecordReader<NullWritable,BufferedImageWritable>((CombineFileSplit)split, context,
                 BufferedImageCombineRecordReader.class);
     }
 
