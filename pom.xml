@@ -14,9 +14,8 @@
             <url>https://repository.cloudera.com/artifactory/cloudera-repos/</url>
         </repository>
         <repository>
-            <id>project.local</id>
-            <name>project</name>
-            <url>file:${project.basedir}/repo</url>
+            <id>OpenIMAJ maven releases repository</id>
+            <url>http://maven.openimaj.org</url>
         </repository>
     </repositories>
 
@@ -26,10 +25,25 @@
             <artifactId>hadoop-client</artifactId>
             <version>2.0.0-cdh4.6.0</version>
         </dependency>
+
         <dependency>
-            <groupId>org.opencv</groupId>
-            <artifactId>opencv-java</artifactId>
-            <version>2.4.9</version>
+            <artifactId>image-processing</artifactId>
+            <groupId>org.openimaj</groupId>
+            <version>1.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <artifactId>faces</artifactId>
+            <groupId>org.openimaj</groupId>
+            <version>1.2.1</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
         </dependency>
 
     </dependencies>

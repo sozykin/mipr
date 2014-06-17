@@ -6,10 +6,6 @@ import org.junit.runners.JUnit4;
 
 import java.io.*;
 
-/**
- * Created by u1213 on 4/5/14.
- */
-
 @RunWith(JUnit4.class)
 public class ImageWritableTest {
 
