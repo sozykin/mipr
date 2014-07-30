@@ -38,7 +38,7 @@ MIPr includes:
 
 2. Run test MIPr Job which convert color images to grayscale:
 
-    $ hadoop jar mipr-0.1.jar mipr.experiments.img2gray.Img2GrayJob hdfs_image_folder hdfs_output_folder
+    $ hadoop jar mipr-0.1-jar-with-dependencies.jar mipr.experiments.img2gray.Img2GrayJob hdfs_image_folder hdfs_output_folder
 
 3. Copy processed images back from HDFS to the local filesystem:
 
