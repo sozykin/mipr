@@ -1,7 +1,6 @@
 package mipr.image;
 
 import org.openimaj.image.FImage;
-
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
@@ -81,6 +80,7 @@ public class FImageWritable extends ImageWritable  {
                 fi.pixels[i][j] = buffer.getFloat();
 
     }
+
 
 
 }

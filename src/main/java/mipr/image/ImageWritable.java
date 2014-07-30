@@ -12,7 +12,7 @@ import java.io.IOException;
  * and can be used as a value in MapReduce programs
  */
 
-public class ImageWritable implements Writable {
+public abstract class ImageWritable implements Writable {
 
     public static String JPEG_FORMAT = "jpg";
 
@@ -58,4 +58,5 @@ public class ImageWritable implements Writable {
         // Read image file name
         fileName = Text.readString(in);
     }
+
 }

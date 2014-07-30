@@ -65,4 +65,5 @@ public class BufferedImageWritable extends ImageWritable {
         // Read image from byte array
         bi = ImageIO.read(new ByteArrayInputStream(bArray));
     }
+
 }
