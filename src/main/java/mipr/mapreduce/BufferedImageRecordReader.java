@@ -26,7 +26,7 @@ public class BufferedImageRecordReader extends ImageRecordReader<BufferedImageWr
         } catch (Exception e) {
             bi = null;
         }
-        biw.setBufferedImage(bi);
+        biw.setImage(bi);
         return biw;
     }
 

@@ -10,32 +10,29 @@ import java.io.*;
  * and can be used as a value in MapReduce programs
  */
 
-public class BufferedImageWritable extends ImageWritable {
-
-    // Internal Image representation
-    private BufferedImage bi = null;
+public class BufferedImageWritable extends ImageWritable<BufferedImage> {
 
     public BufferedImageWritable(){
 
     }
 
     public BufferedImageWritable(BufferedImage bi){
-        this.bi = bi;
+        this.im = bi;
     }
 
     public BufferedImageWritable(BufferedImage bi, String filename, String format){
-        this.bi = bi;
+        this.im = bi;
         setFileName(filename);
         setFormat(format);
     }
 
 
-    public BufferedImage getBufferedImage() {
-        return bi;
+    public BufferedImage getImage() {
+        return im;
     }
 
-    public void setBufferedImage(BufferedImage bi) {
-        this.bi = bi;
+    public void setImage(BufferedImage bi) {
+        this.im = bi;
     }
 
     public void write(DataOutput out) throws IOException {
@@ -44,7 +41,7 @@ public class BufferedImageWritable extends ImageWritable {
         // Write image
         // Convert image to byte array
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        ImageIO.write(bi, this.getFormat(), baos);
+        ImageIO.write(im, this.getFormat(), baos);
         baos.flush();
         byte[] bytes = baos.toByteArray();
         baos.close();
@@ -63,7 +60,7 @@ public class BufferedImageWritable extends ImageWritable {
         byte[] bArray = new byte[bArraySize];
         in.readFully(bArray);
         // Read image from byte array
-        bi = ImageIO.read(new ByteArrayInputStream(bArray));
+        im = ImageIO.read(new ByteArrayInputStream(bArray));
     }
 
 }

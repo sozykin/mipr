@@ -25,7 +25,7 @@ public class FImageRecordReader extends ImageRecordReader<FImageWritable> {
         } catch (Exception e) {
             fi = null;
         }
-        fiw.setFImage(fi);
+        fiw.setImage(fi);
         return fiw;
     }
 

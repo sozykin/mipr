@@ -34,7 +34,7 @@ public class FImageOutputFormat extends FileOutputFormat<NullWritable, FImageWri
 
         @Override
         public void write(NullWritable nullWritable, FImageWritable fImageWritable) throws IOException, InterruptedException {
-            if (fImageWritable.getFImage() != null) {
+            if (fImageWritable.getImage() != null) {
                 FSDataOutputStream imageFile = null;
                 Configuration job = taskAttemptContext.getConfiguration();
                 Path file = FileOutputFormat.getOutputPath(taskAttemptContext);
@@ -45,7 +45,7 @@ public class FImageOutputFormat extends FileOutputFormat<NullWritable, FImageWri
                     // Creating file
                     imageFile = fs.create(imageFilePath);
                     // Write image to file using OpenIMAJ ImageUtilities
-                    ImageUtilities.write(fImageWritable.getFImage(),
+                    ImageUtilities.write(fImageWritable.getImage(),
                             fImageWritable.getFormat(), (OutputStream)imageFile);
                 } finally {
                     IOUtils.closeStream(imageFile);

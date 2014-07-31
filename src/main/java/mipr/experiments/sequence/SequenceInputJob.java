@@ -1,7 +1,6 @@
 package mipr.experiments.sequence;
 
 import mipr.image.BufferedImageWritable;
-import mipr.mapreduce.BufferedImageCombineInputFormat;
 import mipr.mapreduce.BufferedImageOutputFormat;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
@@ -13,7 +12,6 @@ import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
@@ -59,7 +57,7 @@ public class SequenceInputJob extends Configured implements Tool {
 
         public void map(Text key, BufferedImageWritable value, Context context)
                 throws IOException, InterruptedException {
-            if (value.getBufferedImage() != null) {
+            if (value.getImage() != null) {
                 context.write(NullWritable.get(), value);
             }
         }

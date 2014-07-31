@@ -35,7 +35,7 @@ public class BufferedImageOutputFormat extends FileOutputFormat<NullWritable,Buf
 
         @Override
         public void write(NullWritable nullWritable, BufferedImageWritable bufferedImageWritable) throws IOException, InterruptedException {
-            if (bufferedImageWritable.getBufferedImage() != null) {
+            if (bufferedImageWritable.getImage() != null) {
                 FSDataOutputStream imageFile = null;
                 Configuration job = taskAttemptContext.getConfiguration();
                 Path file = FileOutputFormat.getOutputPath(taskAttemptContext);
@@ -46,7 +46,7 @@ public class BufferedImageOutputFormat extends FileOutputFormat<NullWritable,Buf
                     // Creating file
                     imageFile = fs.create(imageFilePath);
                     // Write image to file using ImageIO
-                    ImageIO.write(bufferedImageWritable.getBufferedImage(), bufferedImageWritable.getFormat(), imageFile);
+                    ImageIO.write(bufferedImageWritable.getImage(), bufferedImageWritable.getFormat(), imageFile);
                 } finally {
                     IOUtils.closeStream(imageFile);
                 }

@@ -20,7 +20,7 @@ public class BufferedImageMapper extends Mapper<NullWritable,BufferedImageWritab
 
     public void map(NullWritable key, BufferedImageWritable value, Context context)
             throws IOException, InterruptedException {
-        image = value.getBufferedImage();
+        image = value.getImage();
         if (image != null) {
             Configuration conf = context.getConfiguration();
             String processorClassName = conf.get("mipr.biprocessor.class");

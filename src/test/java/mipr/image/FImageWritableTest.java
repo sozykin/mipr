@@ -27,7 +27,7 @@ public class FImageWritableTest {
             FImageWritable fiw = new FImageWritable();
             fiw.setFileName(IMAGE_FILE_NAME);
             fiw.setFormat(IMAGE_FILE_FORMAT);
-            fiw.setFImage(image);
+            fiw.setImage(image);
             ByteArrayOutputStream bao = new ByteArrayOutputStream();
             fiw.write(new DataOutputStream(bao));
             ByteArrayInputStream bai = new ByteArrayInputStream(bao.toByteArray());
@@ -35,16 +35,16 @@ public class FImageWritableTest {
             fiw2.readFields(new DataInputStream(bai));
 
             assertEquals("Image width serialization error",
-                    fiw.getFImage().getWidth(),
-                    fiw2.getFImage().getWidth());
+                    fiw.getImage().getWidth(),
+                    fiw2.getImage().getWidth());
 
             assertEquals("Image height serialization error",
-                    fiw.getFImage().getHeight(),
-                    fiw2.getFImage().getHeight());
+                    fiw.getImage().getHeight(),
+                    fiw2.getImage().getHeight());
 
             assertArrayEquals("Image pixel array serialization error",
-                    fiw.getFImage().getFloatPixelVector(),
-                    fiw2.getFImage().getFloatPixelVector(),
+                    fiw.getImage().getFloatPixelVector(),
+                    fiw2.getImage().getFloatPixelVector(),
                     0.001f);
 
         } catch (URISyntaxException e) {

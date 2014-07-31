@@ -13,27 +13,24 @@ import java.nio.ByteBuffer;
  * and can be used as a value in MapReduce programs
  */
 
-public class FImageWritable extends ImageWritable  {
+public class FImageWritable extends ImageWritable<FImage>  {
 
-    // Internal image representation
-    FImage fi = null;
-
-    public FImage getFImage() {
-        return fi;
+    public FImage getImage() {
+        return im;
     }
 
-    public void setFImage(FImage fi) {
-        this.fi = fi;
+    public void setImage(FImage fi) {
+        this.im = fi;
     }
 
     public void write(DataOutput out) throws IOException {
         super.write(out);
 
         // Determining size of image
-        int width = fi.getWidth();
-        int height = fi.getHeight();
+        int width = im.getWidth();
+        int height = im.getHeight();
         // Getting pixel array
-        float [] pixels = fi.getFloatPixelVector();
+        float [] pixels = im.getFloatPixelVector();
 
         // Writing size of image
         out.writeInt(width);
@@ -56,18 +53,18 @@ public class FImageWritable extends ImageWritable  {
         // Reading pixel data
         in.readFully(bPixels);
 
-        fi = new FImage(width, height);
+        im = new FImage(width, height);
         fImagePixelsFromByteArray(bPixels);
     }
 
     // Convert FImage pixels to byte array
     private byte[] fImagePixelsToByteArray(){
-        int width = fi.getWidth();
-        int height = fi.getHeight();
+        int width = im.getWidth();
+        int height = im.getHeight();
         ByteBuffer buffer = ByteBuffer.allocate(4 * width * height);
         for (int i = 0; i < height; i++)
             for (int j = 0; j < width; j++)
-                buffer.putFloat(fi.pixels[i][j]);
+                buffer.putFloat(im.pixels[i][j]);
 
         return buffer.array();
     }
@@ -75,12 +72,8 @@ public class FImageWritable extends ImageWritable  {
     // Convert byte array to image pixels
     private void fImagePixelsFromByteArray(byte[] bPixels){
         ByteBuffer buffer = ByteBuffer.wrap(bPixels);
-        for (int i = 0; i < fi.height; i++)
-            for (int j = 0; j < fi.width; j++)
-                fi.pixels[i][j] = buffer.getFloat();
-
+        for (int i = 0; i < im.height; i++)
+            for (int j = 0; j < im.width; j++)
+                im.pixels[i][j] = buffer.getFloat();
     }
-
-
-
 }

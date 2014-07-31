@@ -60,7 +60,7 @@ public class FaceDetection extends Configured implements Tool {
 
         public void map(NullWritable key, FImageWritable value, Context context)
                 throws IOException, InterruptedException {
-            image = value.getFImage();
+            image = value.getImage();
 
             if (image != null) {
                 FaceDetector<DetectedFace,FImage> fd = new HaarCascadeDetector(40);

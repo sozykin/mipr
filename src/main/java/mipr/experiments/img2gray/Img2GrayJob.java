@@ -60,7 +60,7 @@ public class Img2GrayJob extends Configured implements Tool {
 
         public void map(NullWritable key, BufferedImageWritable value, Context context)
                 throws IOException, InterruptedException {
-            BufferedImage colorImage = value.getBufferedImage();
+            BufferedImage colorImage = value.getImage();
 
             if (colorImage != null) {
 
