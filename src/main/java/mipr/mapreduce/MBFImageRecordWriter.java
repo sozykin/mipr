@@ -1,6 +1,6 @@
 package mipr.mapreduce;
 
-import mipr.image.FImageWritable;
+import mipr.image.MBFImageWritable;
 import org.apache.hadoop.fs.FSDataOutputStream;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.openimaj.image.ImageUtilities;
@@ -9,18 +9,18 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- * RecordWriter for FImage (grayscale image format from OpenIMAJ library)
+ * RecordWriter for MBFImage (color image format from OpenIMAJ library)
  */
+public class MBFImageRecordWriter extends ImageRecordWriter<MBFImageWritable> {
 
-public class FImageRecordWriter extends ImageRecordWriter<FImageWritable> {
 
-
-    FImageRecordWriter(TaskAttemptContext taskAttemptContext){
+    MBFImageRecordWriter(TaskAttemptContext taskAttemptContext){
         super(taskAttemptContext);
     }
 
     @Override
-    protected void writeImage(FImageWritable image, FSDataOutputStream imageFile) throws IOException {
+    protected void writeImage(MBFImageWritable image, FSDataOutputStream imageFile)
+            throws IOException {
         ImageUtilities.write(image.getImage(),
                 image.getFormat(), (OutputStream) imageFile);
     }
