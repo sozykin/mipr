@@ -4,7 +4,7 @@ import org.openimaj.image.FImage;
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;
-import java.nio.ByteBuffer;
+import mipr.utils.OpenIMAJUtilities;
 
 /**
  * MIPr image representation based on FImage -
@@ -29,15 +29,13 @@ public class FImageWritable extends ImageWritable<FImage>  {
         // Determining size of image
         int width = im.getWidth();
         int height = im.getHeight();
-        // Getting pixel array
-        float [] pixels = im.getFloatPixelVector();
 
         // Writing size of image
         out.writeInt(width);
         out.writeInt(height);
 
         // Write pixels
-        out.write(fImagePixelsToByteArray());
+        out.write(OpenIMAJUtilities.fImagePixelsToByteArray(im));
     }
 
     public void readFields(DataInput in) throws IOException{
@@ -54,26 +52,6 @@ public class FImageWritable extends ImageWritable<FImage>  {
         in.readFully(bPixels);
 
         im = new FImage(width, height);
-        fImagePixelsFromByteArray(bPixels);
-    }
-
-    // Convert FImage pixels to byte array
-    private byte[] fImagePixelsToByteArray(){
-        int width = im.getWidth();
-        int height = im.getHeight();
-        ByteBuffer buffer = ByteBuffer.allocate(4 * width * height);
-        for (int i = 0; i < height; i++)
-            for (int j = 0; j < width; j++)
-                buffer.putFloat(im.pixels[i][j]);
-
-        return buffer.array();
-    }
-
-    // Convert byte array to image pixels
-    private void fImagePixelsFromByteArray(byte[] bPixels){
-        ByteBuffer buffer = ByteBuffer.wrap(bPixels);
-        for (int i = 0; i < im.height; i++)
-            for (int j = 0; j < im.width; j++)
-                im.pixels[i][j] = buffer.getFloat();
+        OpenIMAJUtilities.setFImagePixelsFromByteArray(im, bPixels);
     }
 }
