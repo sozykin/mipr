@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.aetrion.flickr:flickrapi:1.2ss.1">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aetrion/flickr/flickrapi/1.2ss.1/flickrapi-1.2ss.1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aetrion/flickr/flickrapi/1.2ss.1/flickrapi-1.2ss.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/aetrion/flickr/flickrapi/1.2ss.1/flickrapi-1.2ss.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

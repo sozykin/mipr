@@ -9,6 +9,21 @@
     <version>0.1</version>
 
     <build>
+        <extensions>
+            <!-- Enabling the use of FTP -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh-external</artifactId>
+                <version>1.0-beta-6</version>
+            </extension>
+
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-webdav</artifactId>
+                <version>1.0-beta-2</version>
+            </extension>
+        </extensions>
+
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
@@ -25,6 +40,57 @@
                         <goals>
                             <goal>single</goal>
                         </goals>
+                    </execution>
+                </executions>
+            </plugin>
+
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>wagon-maven-plugin</artifactId>
+                <version>1.0-beta-5</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>org.apache.maven.wagon</groupId>
+                        <artifactId>wagon-ssh</artifactId>
+                        <version>1.0-beta-7</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <id>execute-test-commands</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>sshexec</goal>
+                        </goals>
+                        <configuration>
+                            <serverId>hadoop.vm</serverId>
+                            <url>scp://192.168.56.2</url>
+                            <commands>
+                                <!--<command>export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5000"</command>-->
+<!--                                <command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.filtering.ImgEdgeDetection -files /root/mipr/kernel.json /user/root/hadoopimg /user/root/out_images
+                                </command>-->
+                                <command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.face_counting.FaceCountGray /user/root/faces /user/root/faces_count
+                                </command>
+                                <!--<command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1.jar mipr.experiments.img2gray.Img2PNGJob /user/root/hadoopimg /user/root/out_images bmp</command>-->
+                                <!--<command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1.jar mipr.experiments.img2gray.Img2PNGJob -D mapreduce.framework.name=local /user/root/hadoopimg /user/root/out_images bmp</command>-->
+                                <!--<command>hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.img2gray.Img2GrayJob /user/root/hadoopimg /user/root/out_images</command>-->
+                            </commands>
+                        </configuration>
+                    </execution>
+
+                    <execution>
+                        <id>remove-output-folder</id>
+                        <phase>clean</phase>
+                        <goals>
+                            <goal>sshexec</goal>
+                        </goals>
+                        <configuration>
+                            <serverId>hadoop.vm</serverId>
+                            <url>scp://192.168.56.2</url>
+                            <commands>
+                                <command failOnError="false">hadoop fs -rm -f -r /user/root/out_images</command>
+                            </commands>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
@@ -69,11 +135,25 @@
             <scope>test</scope>
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20140107</version>
+        </dependency>
+
+
     </dependencies>
 
     <properties>
         <maven.compiler.source>7</maven.compiler.source>
         <maven.compiler.target>7</maven.compiler.target>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>hadoop.vm</id>
+            <url>scpexe://192.168.56.2/root/mipr</url>
+        </repository>
+    </distributionManagement>
 
 </project>

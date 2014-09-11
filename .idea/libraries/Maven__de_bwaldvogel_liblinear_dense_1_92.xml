@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: de.bwaldvogel:liblinear-dense:1.92">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/bwaldvogel/liblinear-dense/1.92/liblinear-dense-1.92.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/de/bwaldvogel/liblinear-dense/1.92/liblinear-dense-1.92-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/de/bwaldvogel/liblinear-dense/1.92/liblinear-dense-1.92-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

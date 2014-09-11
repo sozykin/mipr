@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.twelvemonkeys.imageio:imageio-metadata:3.0-20130211">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twelvemonkeys/imageio/imageio-metadata/3.0-20130211/imageio-metadata-3.0-20130211.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twelvemonkeys/imageio/imageio-metadata/3.0-20130211/imageio-metadata-3.0-20130211-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/twelvemonkeys/imageio/imageio-metadata/3.0-20130211/imageio-metadata-3.0-20130211-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
