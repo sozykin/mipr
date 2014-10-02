@@ -69,7 +69,7 @@
                                 <!--<command>export HADOOP_OPTS="-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=5000"</command>-->
 <!--                                <command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.filtering.ImgEdgeDetection -files /root/mipr/kernel.json /user/root/hadoopimg /user/root/out_images
                                 </command>-->
-                                <command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.face_counting.FaceCountGray /user/root/faces /user/root/faces_count
+                                <command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1-jar-with-dependencies.jar mipr.experiments.face_counting.FaceDetector /user/root/faces /user/root/detected_faces
                                 </command>
                                 <!--<command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1.jar mipr.experiments.img2gray.Img2PNGJob /user/root/hadoopimg /user/root/out_images bmp</command>-->
                                 <!--<command failOnError="false">hadoop jar /root/mipr/mipr/mipr/0.1/mipr-0.1.jar mipr.experiments.img2gray.Img2PNGJob -D mapreduce.framework.name=local /user/root/hadoopimg /user/root/out_images bmp</command>-->
