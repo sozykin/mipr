@@ -20,7 +20,7 @@ MIPr includes:
 
 1. Clone repository with MIPr sources
 
-    `git clone ...`
+    `git clone https://github.com/sozykin/mipr.git`
 
 2. Build package by using Apache Maven
 
