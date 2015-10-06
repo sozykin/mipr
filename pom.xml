@@ -42,12 +42,5 @@
         </plugins>
     </build>
 
-    <distributionManagement>
-        <repository>
-            <id>karamba.vm</id>
-            <url>scpexe://192.168.56.101/root/</url>
-        </repository>
-    </distributionManagement>
-
 </project>
 
