@@ -5,7 +5,6 @@ import opencv.CombineMatImageInputFormat;
 import opencv.MatImageOutputFormat;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
-import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.NullWritable;
 import org.apache.hadoop.mapreduce.Job;
@@ -25,9 +24,7 @@ public class Img2Gray_opencv_combine {
         String input = args[0];
         String output = args[1];
 
-        Configuration conf = new Configuration();
-        conf.set("mapreduce.input.fileinputformat.input.dir.recursive", "true");
-        Job job = MiprMain.getOpenCVJobTemplate(conf);
+        Job job = MiprMain.getOpenCVJobTemplate();
         job.setJarByClass(Img2Gray_opencv_combine.class);
         job.setMapperClass(Img2Gray_opencvMapper.class);
         job.setInputFormatClass(CombineMatImageInputFormat.class);
