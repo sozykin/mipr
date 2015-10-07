@@ -1,6 +1,6 @@
 package utils;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.CombineMatImageInputFormat;
 import opencv.MatImageWritable;
 import org.apache.hadoop.conf.Configuration;
@@ -27,7 +27,7 @@ public class SequenceFileMatImagePackager {
         String output = args[1];
 
         Configuration conf = new Configuration();
-        DistributedCache.addCacheFile(MiprMain.getOpenCVUri(), conf);
+        DistributedCache.addCacheFile(MiprConfigurationParser.getOpenCVUri(), conf);
         conf.set("mapreduce.map.memory.mb", "1250");
         conf.set("mapreduce.reduce.memory.mb", "1250");
         Job job = new Job(conf);

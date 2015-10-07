@@ -1,6 +1,6 @@
 package experiments;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.MatImageInputFormat;
 import opencv.MatImageOutputFormat;
 import opencv.MatImageWritable;
@@ -33,7 +33,7 @@ public class Img2Gray_opencv extends Configured implements Tool {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprMain.getOpenCVJobTemplate();
+        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
         job.setJarByClass(Img2Gray_opencv.class);
         job.setMapperClass(Img2Gray_opencvMapper.class);
         job.setInputFormatClass(MatImageInputFormat.class);

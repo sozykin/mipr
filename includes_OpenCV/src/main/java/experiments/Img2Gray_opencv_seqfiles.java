@@ -1,6 +1,6 @@
 package experiments;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.MatImageOutputFormat;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
@@ -25,7 +25,7 @@ public class Img2Gray_opencv_seqfiles {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprMain.getOpenCVJobTemplate();
+        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
         job.setJarByClass(Img2Gray_opencv_seqfiles.class);
         job.setMapperClass(Img2Gray_opencvMapper.class);
         job.setInputFormatClass(SequenceFileInputFormat.class);

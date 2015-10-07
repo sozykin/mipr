@@ -1,6 +1,6 @@
 package experiments;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.MatImageOutputFormat;
 import opencv.MatImageWritable;
 import opencv.OpenCVMapper;
@@ -24,7 +24,7 @@ public class FaceDetectionOpenCV_seqfiles {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprMain.getOpenCVJobTemplate();
+        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
         job.setJarByClass(FaceDetectionOpenCV_seqfiles.class);
         job.setMapperClass(FaceDetectorMapper.class);
         job.setInputFormatClass(SequenceFileInputFormat.class);

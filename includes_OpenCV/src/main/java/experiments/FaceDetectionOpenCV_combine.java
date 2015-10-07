@@ -1,6 +1,6 @@
 package experiments;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.CombineMatImageInputFormat;
 import opencv.MatImageOutputFormat;
 import opencv.MatImageWritable;
@@ -23,7 +23,7 @@ public class FaceDetectionOpenCV_combine {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprMain.getOpenCVJobTemplate();
+        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
         job.setJarByClass(FaceDetectionOpenCV_combine.class);
         job.setMapperClass(FaceDetectorMapper.class);
         job.setInputFormatClass(CombineMatImageInputFormat.class);

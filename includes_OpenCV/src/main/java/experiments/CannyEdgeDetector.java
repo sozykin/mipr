@@ -1,6 +1,6 @@
 package experiments;
 
-import core.MiprMain;
+import core.MiprConfigurationParser;
 import opencv.*;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.NullWritable;
@@ -20,7 +20,7 @@ public class CannyEdgeDetector {
 
         long startTime = System.currentTimeMillis();
 
-        Job job = MiprMain.getOpenCVJobTemplate();
+        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
         job.setJarByClass(CannyEdgeDetector.class);
         job.setMapperClass(CannyMapper.class);
         job.setInputFormatClass(CombineMatImageInputFormat.class);
