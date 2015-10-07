@@ -2,3 +2,4 @@
 *.iml
 .idea
 target
+core_package/src/configuration/main.json
