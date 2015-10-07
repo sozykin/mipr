@@ -1,4 +1,11 @@
 {
-  "opencvpath": "/lib/libopencv_java2411.so",
-  "maxsplitsize": 134217728
+  "mipr-conf":
+  {
+    "opencvpath": "/lib/libopencv_java2411.so",
+    "maxsplitsize": 134217728
+  },
+  "java-conf":
+  {
+    "mapred.child.java.opts": "-Xmx2g -XX:+UseParallelGC"
+  }
 }

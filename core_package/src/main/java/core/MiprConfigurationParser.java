@@ -12,12 +12,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URI;
 
-/**
- * Created by Epanchee on 28.04.15.
- */
 public class MiprConfigurationParser {
 
     public MiprConfigurationParser() {
+        conf = new Configuration();
+
         JSONParser jparser = new JSONParser();
         JSONObject settings = null;
         try {
@@ -26,12 +25,24 @@ public class MiprConfigurationParser {
             e.printStackTrace();
         }
 
-        opencvpath = (String) settings.get("opencvpath");
-        maxsplitsize = (long) settings.get("maxsplitsize");
+        try {
+            JSONObject miprconf = (JSONObject) settings.get("mipr-conf");
+            opencvpath = (String) miprconf.get("opencvpath");
+            maxsplitsize = (long) miprconf.get("maxsplitsize");
+
+            JSONObject javaconf = (JSONObject) settings.get("java-conf");
+            for (Object o : javaconf.keySet()) {
+                String key = (String) o;
+                conf.set(key, (String) javaconf.get(o));
+            }
+        } catch (NullPointerException e) {
+            System.out.println("Error occured while parsing configuration file. Check your core_package/src/configuration/main.json file.");
+        }
     }
 
-    public String opencvpath = "";
-    public long maxsplitsize = 134217728;
+    private String opencvpath = "";
+    private long maxsplitsize = 134217728;
+    private Configuration conf;
 
     public URI getOpenCVUri(){
         return new Path(opencvpath).toUri();
@@ -42,7 +53,6 @@ public class MiprConfigurationParser {
     }
 
     public Job getOpenCVJobTemplate() throws IOException {
-        Configuration conf = new Configuration();
         return getOpenCVJobTemplate(conf);
     }
 
