@@ -24,7 +24,7 @@ public class FaceDetectionOpenCV_seqfiles {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
+        Job job = new MiprConfigurationParser().getOpenCVJobTemplate();
         job.setJarByClass(FaceDetectionOpenCV_seqfiles.class);
         job.setMapperClass(FaceDetectorMapper.class);
         job.setInputFormatClass(SequenceFileInputFormat.class);

@@ -20,7 +20,7 @@ public class CannyEdgeDetector {
 
         long startTime = System.currentTimeMillis();
 
-        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
+        Job job = new MiprConfigurationParser().getOpenCVJobTemplate();
         job.setJarByClass(CannyEdgeDetector.class);
         job.setMapperClass(CannyMapper.class);
         job.setInputFormatClass(CombineMatImageInputFormat.class);

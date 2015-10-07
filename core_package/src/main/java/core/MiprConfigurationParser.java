@@ -17,32 +17,37 @@ import java.net.URI;
  */
 public class MiprConfigurationParser {
 
-    MiprConfigurationParser() throws IOException, ParseException {
+    public MiprConfigurationParser() {
         JSONParser jparser = new JSONParser();
-        JSONObject settings = (JSONObject) jparser.parse(new FileReader(getClass().getClassLoader().getResource("main.json").getFile()));
+        JSONObject settings = null;
+        try {
+            settings = (JSONObject) jparser.parse(new FileReader(getClass().getClassLoader().getResource("main.json").getFile()));
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
+        }
 
         opencvpath = (String) settings.get("opencvpath");
         maxsplitsize = (long) settings.get("maxsplitsize");
     }
 
-    public static String opencvpath = "";
-    public static long maxsplitsize = 134217728;
+    public String opencvpath = "";
+    public long maxsplitsize = 134217728;
 
-    public static URI getOpenCVUri(){
+    public URI getOpenCVUri(){
         return new Path(opencvpath).toUri();
     }
 
-    public static long getMaxSplitSize(){
+    public long getMaxSplitSize(){
         return maxsplitsize;
     }
 
-    public static Job getOpenCVJobTemplate() throws IOException {
+    public Job getOpenCVJobTemplate() throws IOException {
         Configuration conf = new Configuration();
         return getOpenCVJobTemplate(conf);
     }
 
-    public static Job getOpenCVJobTemplate(Configuration conf) throws IOException {
-        DistributedCache.addCacheFile(MiprConfigurationParser.getOpenCVUri(), conf);
+    public Job getOpenCVJobTemplate(Configuration conf) throws IOException {
+        DistributedCache.addCacheFile(getOpenCVUri(), conf);
         Job job = new Job(conf);
         job.setNumReduceTasks(0);
 

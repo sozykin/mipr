@@ -27,7 +27,7 @@ public class SequenceFileMatImagePackager {
         String output = args[1];
 
         Configuration conf = new Configuration();
-        DistributedCache.addCacheFile(MiprConfigurationParser.getOpenCVUri(), conf);
+        DistributedCache.addCacheFile(new MiprConfigurationParser().getOpenCVUri(), conf);
         conf.set("mapreduce.map.memory.mb", "1250");
         conf.set("mapreduce.reduce.memory.mb", "1250");
         Job job = new Job(conf);

@@ -23,7 +23,7 @@ public class FaceDetectionOpenCV {
         String input = args[0];
         String output = args[1];
 
-        Job job = MiprConfigurationParser.getOpenCVJobTemplate();
+        Job job = new MiprConfigurationParser().getOpenCVJobTemplate();
         job.setJarByClass(FaceDetectionOpenCV.class);
         job.setMapperClass(FaceDetectorMapper.class);
         job.setInputFormatClass(MatImageInputFormat.class);
