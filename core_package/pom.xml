@@ -15,7 +15,7 @@
     <build>
         <resources>
             <resource>
-                <directory>/src/configuration</directory>
+                <directory>src/configuration</directory>
                 <includes>
                     <include>main.json</include>
                 </includes>
