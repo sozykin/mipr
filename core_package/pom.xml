@@ -13,6 +13,14 @@
     <version>0.1</version>
 
     <build>
+        <resources>
+            <resource>
+                <directory>/src/configuration</directory>
+                <includes>
+                    <include>main.json</include>
+                </includes>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
