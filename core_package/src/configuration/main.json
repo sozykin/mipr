@@ -1,7 +1,7 @@
 {
   "mipr-conf":
   {
-    "opencvpath": "/lib/libopencv_java300.so",
+    "opencvpath": "/libs/libopencv_java300.so",
     "opencvcore": "/data/libs/libopencv_core.so.3.0",
     "maxsplitsize": 134217728
   },
