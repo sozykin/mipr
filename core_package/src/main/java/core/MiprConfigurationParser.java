@@ -28,7 +28,6 @@ public class MiprConfigurationParser {
         try {
             JSONObject miprconf = (JSONObject) settings.get("mipr-conf");
             opencvpath = (String) miprconf.get("opencvpath");
-            opencvcore = (String) miprconf.get("opencvcore");
             maxsplitsize = (long) miprconf.get("maxsplitsize");
 
             JSONObject javaconf = (JSONObject) settings.get("java-conf");
@@ -41,17 +40,12 @@ public class MiprConfigurationParser {
         }
     }
 
-    private String opencvcore = "";
     private String opencvpath = "";
     private long maxsplitsize = 134217728;
     private Configuration conf;
 
     public URI getOpenCVUri(){
         return new Path(opencvpath).toUri();
-    }
-
-    public URI getOpenCVCoreUri(){
-        return new Path(opencvcore).toUri();
     }
 
     public long getMaxSplitSize(){
@@ -64,7 +58,6 @@ public class MiprConfigurationParser {
 
     public Job getOpenCVJobTemplate(Configuration conf) throws IOException {
         DistributedCache.addCacheFile(getOpenCVUri(), conf);
-        DistributedCache.addCacheFile(getOpenCVCoreUri(), conf);
         Job job = new Job(conf);
         job.setNumReduceTasks(0);
 
