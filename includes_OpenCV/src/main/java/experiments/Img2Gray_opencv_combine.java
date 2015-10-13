@@ -32,7 +32,7 @@ public class Img2Gray_opencv_combine {
         job.setOutputFormatClass(MatImageOutputFormat.class);
         Path outputPath = new Path(output);
         FileInputFormat.setInputPaths(job, input);
-        FileInputFormat.setMaxInputSplitSize(job, confParser.getMaxSplitSize());
+//        FileInputFormat.setMaxInputSplitSize(job, confParser.getMaxSplitSize());
         FileOutputFormat.setOutputPath(job, outputPath);
         job.setOutputKeyClass(NullWritable.class);
         job.setOutputValueClass(MatImageWritable.class);

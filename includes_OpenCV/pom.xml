@@ -16,7 +16,7 @@
         <finalName>opencv</finalName>
         <resources>
             <resource>
-                <directory>/src/main/resources</directory>
+                <directory>/src/resources</directory>
                 <includes>
                     <include>lbpcascade_frontalface.xml</include>
                 </includes>
