@@ -50,7 +50,19 @@ MIPr includes:
 
 2. Run test MIPr Job which converts color images to grayscale:
 
-    `$ hadoop jar mipr-core-0.1-jar-with-dependencies.jar experiments.Img2Gray hdfs_image_folder hdfs_output_folder`
+2.0.If some error looks like "Mkdirs with META-INF/LICENSE" happened in MacOS, the solution is:
+
+http://stackoverflow.com/questions/10522835/hadoop-java-io-ioexception-mkdirs-failed-to-create-some-path
+
+2.1.modify jar
+
+  `$ zip -d mipr-core-0.1-jar-with-dependencies.jar META-INF/LICENSE`
+    
+  `$ zip -d mipr-core-0.1-jar-with-dependencies.jar LICENSE`
+    
+2.2.Run test MIPr Job which converts color images to grayscale:
+
+  `$ hadoop jar mipr-core-0.1-jar-with-dependencies.jar experiments.Img2Gray hdfs_image_folder hdfs_output_folder`
 
 3. Copy processed images back from HDFS to the local filesystem:
 
